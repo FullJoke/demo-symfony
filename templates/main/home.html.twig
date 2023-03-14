@@ -1,0 +1,55 @@
+    {% extends 'base.html.twig' %}
+
+
+    {% block body %}
+        <h1>Coucou</h1>
+        {# ma zone de commentaire #}
+
+        {%  set prenom = 'laurent' %}
+        {%  set nom = 'dupont' %}
+        <p>Mr {{ prenom | capitalize }} {{ nom | upper }}</p>
+
+        {% set colors = ["purple", "indigo", "blue", "green", "yellow", "orange", "red"] %}
+        <div>Il y a {{ colors | length}} couleur{{ colors | length > 1 ? 's' : '' }} dans le tableau</div>
+
+        <div>{{ colors | join(', ') }}</div>
+
+        <ul>
+            {% for c in colors %}
+                <li style="background-color: {{ c }}; color: darkgrey">{{ c }}</li>
+                {% if loop.last %}
+                    <li>Arriveras-tu à trouver le trésor ?</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <br>
+
+        {% set film = {
+            title: 'It',
+            year: 2017,
+            real: "Martin Scorsese"
+        } %}
+
+        <p>{{ film.title }}</p>
+        {% for key,val in film %}
+            <div>{{ key }} = {{ val }}</div>
+        {% endfor %}
+
+        <ul>
+            {% set actors = [] %}
+            {% for actor in actors %}
+                <li>{{ actor }}</li>
+            {% else %}
+                <li>Pas d'acteur</li>
+            {% endfor %}
+        </ul>
+
+        <br>
+
+        <div>Aujourd'hui, nous sommes le {{ "now" | date('Dd/m/Y') }}.</div>
+        <div>Nous sommes en l'an {{ "now" | date('Y') }}.</div>
+        <div>Dans un an, nous serons {{ "+1year" | date('Dd/d/Y')}}</div>
+    {% endblock %}
+
+    {% block title %}{{ parent() }} | Home{% endblock %}

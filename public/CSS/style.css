@@ -1,0 +1,15 @@
+*{
+    background: linear-gradient(#000000, #132135);
+    background-attachment: fixed;
+    font-size: 1rem;
+    font-family: 'Roboto Light';
+}
+
+h1{
+    font-size: 4rem;
+    text-align: center;
+}
+
+#footer{
+    text-align: center;
+}
